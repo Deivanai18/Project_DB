@@ -1,0 +1,59 @@
+mysql --user=training --password=training
+show databases;
+use projectDB;
+create table clickstream (userId integer, timestamp datetime not null, page varchar(50) not null);
+load data infile '/home/training/Downloads/Dataset - clickstream_data.csv' into table clickstream fields terminated by ',' lines terminated by '\n';
+select * from clickstream;
+
+
+create table customer (userId integer, name varchar(50) not null, email varchar(50) not null);
+load data infile '/home/training/Downloads/Dataset - customer_data.csv' into table customer fields terminated by ',' lines terminated by '\n';
+select * from customer;
+
+
+create table purchase (userId integer, timestamp datetime not null, amount varchar(10) not null);
+load data infile '/home/training/Downloads/Dataset - purchase_data.csv' into table purchase fields terminated by ',' lines terminated by '\n';
+select * from purchase;
+
+HIVE
+
+create database projectDB;
+use projectDB;
+create table clickstream(userId int,ts timestamp,page string);
+select * from clickstream; 
+create table customer(userId int,name string,email string);
+select * from customer;
+create table purchase(userId int,ts timestamp,amount int);
+select * from purchase;
+
+SQOOP
+
+sqoop import --connect jdbc:mysql://localhost/projectDB --username training --password training --table clickstream --hive-import --hive-table projectDB.clickstream -m1
+
+sqoop import --connect jdbc:mysql://localhost/projectDB --username training --password training --table customer --hive-import --hive-table projectDB.customer -m1
+
+sqoop import --connect jdbc:mysql://localhost/projectDB --username training --password training --table purchase --hive-import --hive-table projectDB.purchase -m1
+
+HIVE FUNCTIONS
+
+select userId,count(userId) from clickstream group by userId having count(userId) > 1;
+select page,count(*) from clickstream group by page; 
+select ts, avg(amount) from purchase group by ts;
+select avg(amount) from purchase;
+select amount,isnull(amount) from purchase;
+select amount,isnotnull(amount) from purchase;
+select email,count(*) from customer group by email; 
+select * from purchase order by amount;
+select * from purchase order by amount desc;
+select * from purchase sort by amount desc limit 1;
+select * from customer join purchase on purchase.userId=customer.userId;
+ select * from customer join purchase on purchase.userId=customer.userId limit 2;
+
+
+
+
+
+
+
+
+
