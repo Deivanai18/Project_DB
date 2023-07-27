@@ -1,0 +1,53 @@
+[training@localhost ~]$ hive
+Logging initialized using configuration in file:/etc/hive/conf.dist/hive-log4j.properties
+Hive history file=/tmp/training/hive_job_log_training_202307202012_1642674697.txt
+hive> use projectDB;
+OK
+Time taken: 1.964 seconds
+hive> show tables;
+OK
+clickstream
+customer
+purchase
+Time taken: 0.407 seconds
+hive> select * from purchase;
+OK
+1	2023-01-01 10:05:00	100
+2	2023-01-01 10:08:00	150
+3	2023-01-01 10:09:00	200
+4	2023-01-01 10:13:00	120
+5	2023-01-01 10:17:00	80
+Time taken: 6.03 seconds
+hive> select * from customer;
+OK
+1	John Doe	john.doe@example.com
+2	Jane Smith	jane.smith@example.com
+3	Robert Johnson	robert.johnson@example.com
+4	Lisa Brown	lisa.brown@example.com
+5	Michael Wilson	michael.wilson@example.com
+Time taken: 0.094 seconds
+hive> select * from clickstream;
+OK
+1	2023-01-01 10:00:00	homepage
+1	2023-01-01 10:01:00	product_page
+2	2023-01-01 10:02:00	homepage
+2	2023-01-01 10:03:00	cart_page
+3	2023-01-01 10:05:00	homepage
+3	2023-01-01 10:06:00	product_page
+3	2023-01-01 10:07:00	cart_page
+4	2023-01-01 10:09:00	homepage
+4	2023-01-01 10:10:00	product_page
+4	2023-01-01 10:11:00	cart_page
+4	2023-01-01 10:12:00	checkout_page
+5	2023-01-01 10:15:00	homepage
+5	2023-01-01 10:16:00	product_page
+Time taken: 0.084 seconds
+hive> select * from customer;   
+OK
+1	John Doe	john.doe@example.com
+2	Jane Smith	jane.smith@example.com
+3	Robert Johnson	robert.johnson@example.com
+4	Lisa Brown	lisa.brown@example.com
+5	Michael Wilson	michael.wilson@example.com
+Time taken: 0.131 seconds
+hive> 
