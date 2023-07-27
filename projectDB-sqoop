@@ -1,0 +1,483 @@
+23/07/19 21:07:39 INFO manager.SqlManager: Executing SQL statement: SELECT t.* FROM `clickstream` AS t LIMIT 1
+23/07/19 21:07:39 INFO orm.CompilationManager: HADOOP_HOME is /usr/lib/hadoop
+Note: /tmp/sqoop-training/compile/2ccf473c95172ef733fd71df5c6acb96/clickstream.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+23/07/19 21:07:40 INFO orm.CompilationManager: Writing jar file: /tmp/sqoop-training/compile/2ccf473c95172ef733fd71df5c6acb96/clickstream.jar
+23/07/19 21:07:40 WARN manager.MySQLManager: It looks like you are importing from mysql.
+23/07/19 21:07:40 WARN manager.MySQLManager: This transfer can be faster! Use the --direct
+23/07/19 21:07:40 WARN manager.MySQLManager: option to exercise a MySQL-specific fast path.
+23/07/19 21:07:40 INFO manager.MySQLManager: Setting zero DATETIME behavior to convertToNull (mysql)
+23/07/19 21:07:40 ERROR tool.ImportTool: Error during import: No primary key could be found for table clickstream. Please specify one with --split-by or perform a sequential import with '-m 1'.
+[training@localhost ~]$ sqoop import --connect jdbc:mysql://localhost/projectDB --username training --password training --table clickstream --hive-import --hive-table projectDB.clickstream -m1
+23/07/19 21:08:08 WARN tool.BaseSqoopTool: Setting your password on the command-line is insecure. Consider using -P instead.
+23/07/19 21:08:08 INFO tool.BaseSqoopTool: Using Hive-specific delimiters for output. You can override
+23/07/19 21:08:08 INFO tool.BaseSqoopTool: delimiters with --fields-terminated-by, etc.
+23/07/19 21:08:08 INFO manager.MySQLManager: Preparing to use a MySQL streaming resultset.
+23/07/19 21:08:08 INFO tool.CodeGenTool: Beginning code generation
+23/07/19 21:08:08 INFO manager.SqlManager: Executing SQL statement: SELECT t.* FROM `clickstream` AS t LIMIT 1
+23/07/19 21:08:08 INFO manager.SqlManager: Executing SQL statement: SELECT t.* FROM `clickstream` AS t LIMIT 1
+23/07/19 21:08:08 INFO orm.CompilationManager: HADOOP_HOME is /usr/lib/hadoop
+Note: /tmp/sqoop-training/compile/dbcf22bb4a3e347bc0db0ed1482aca88/clickstream.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+23/07/19 21:08:09 INFO orm.CompilationManager: Writing jar file: /tmp/sqoop-training/compile/dbcf22bb4a3e347bc0db0ed1482aca88/clickstream.jar
+23/07/19 21:08:09 WARN manager.MySQLManager: It looks like you are importing from mysql.
+23/07/19 21:08:09 WARN manager.MySQLManager: This transfer can be faster! Use the --direct
+23/07/19 21:08:09 WARN manager.MySQLManager: option to exercise a MySQL-specific fast path.
+23/07/19 21:08:09 INFO manager.MySQLManager: Setting zero DATETIME behavior to convertToNull (mysql)
+23/07/19 21:08:09 INFO mapreduce.ImportJobBase: Beginning import of clickstream
+23/07/19 21:08:10 WARN mapred.JobClient: Use GenericOptionsParser for parsing the arguments. Applications should implement Tool for the same.
+23/07/19 21:08:11 INFO mapred.JobClient: Cleaning up the staging area hdfs://0.0.0.0:8020/var/lib/hadoop-hdfs/cache/mapred/mapred/staging/training/.staging/job_202307191745_0003
+23/07/19 21:08:11 ERROR security.UserGroupInformation: PriviledgedActionException as:training (auth:SIMPLE) cause:org.apache.hadoop.mapred.FileAlreadyExistsException: Output directory clickstream already exists
+23/07/19 21:08:11 ERROR tool.ImportTool: Encountered IOException running import job: org.apache.hadoop.mapred.FileAlreadyExistsException: Output directory clickstream already exists
+	at org.apache.hadoop.mapreduce.lib.output.FileOutputFormat.checkOutputSpecs(FileOutputFormat.java:132)
+	at org.apache.hadoop.mapred.JobClient$2.run(JobClient.java:935)
+	at org.apache.hadoop.mapred.JobClient$2.run(JobClient.java:896)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:396)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1332)
+	at org.apache.hadoop.mapred.JobClient.submitJobInternal(JobClient.java:896)
+	at org.apache.hadoop.mapreduce.Job.submit(Job.java:531)
+	at org.apache.hadoop.mapreduce.Job.waitForCompletion(Job.java:561)
+	at org.apache.sqoop.mapreduce.ImportJobBase.runJob(ImportJobBase.java:141)
+	at org.apache.sqoop.mapreduce.ImportJobBase.runImport(ImportJobBase.java:202)
+	at org.apache.sqoop.manager.SqlManager.importTable(SqlManager.java:465)
+	at org.apache.sqoop.manager.MySQLManager.importTable(MySQLManager.java:100)
+	at org.apache.sqoop.tool.ImportTool.importTable(ImportTool.java:403)
+	at org.apache.sqoop.tool.ImportTool.run(ImportTool.java:476)
+	at org.apache.sqoop.Sqoop.run(Sqoop.java:145)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:70)
+	at org.apache.sqoop.Sqoop.runSqoop(Sqoop.java:181)
+	at org.apache.sqoop.Sqoop.runTool(Sqoop.java:220)
+	at org.apache.sqoop.Sqoop.runTool(Sqoop.java:229)
+	at org.apache.sqoop.Sqoop.main(Sqoop.java:238)
+	at com.cloudera.sqoop.Sqoop.main(Sqoop.java:57)
+
+[training@localhost ~]$ sqoop import --connect jdbc:mysql://localhost/projectDB --username training --password training --table clickstream --hive-import --hive-table projectDB.clickstream -m1
+23/07/19 21:11:04 WARN tool.BaseSqoopTool: Setting your password on the command-line is insecure. Consider using -P instead.
+23/07/19 21:11:04 INFO tool.BaseSqoopTool: Using Hive-specific delimiters for output. You can override
+23/07/19 21:11:04 INFO tool.BaseSqoopTool: delimiters with --fields-terminated-by, etc.
+23/07/19 21:11:04 INFO manager.MySQLManager: Preparing to use a MySQL streaming resultset.
+23/07/19 21:11:04 INFO tool.CodeGenTool: Beginning code generation
+23/07/19 21:11:04 INFO manager.SqlManager: Executing SQL statement: SELECT t.* FROM `clickstream` AS t LIMIT 1
+23/07/19 21:11:04 INFO manager.SqlManager: Executing SQL statement: SELECT t.* FROM `clickstream` AS t LIMIT 1
+23/07/19 21:11:04 INFO orm.CompilationManager: HADOOP_HOME is /usr/lib/hadoop
+Note: /tmp/sqoop-training/compile/94cc38aed191ff06f06a2b5d18bb1fa5/clickstream.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+23/07/19 21:11:05 INFO orm.CompilationManager: Writing jar file: /tmp/sqoop-training/compile/94cc38aed191ff06f06a2b5d18bb1fa5/clickstream.jar
+23/07/19 21:11:05 WARN manager.MySQLManager: It looks like you are importing from mysql.
+23/07/19 21:11:05 WARN manager.MySQLManager: This transfer can be faster! Use the --direct
+23/07/19 21:11:05 WARN manager.MySQLManager: option to exercise a MySQL-specific fast path.
+23/07/19 21:11:05 INFO manager.MySQLManager: Setting zero DATETIME behavior to convertToNull (mysql)
+23/07/19 21:11:05 INFO mapreduce.ImportJobBase: Beginning import of clickstream
+23/07/19 21:11:06 WARN mapred.JobClient: Use GenericOptionsParser for parsing the arguments. Applications should implement Tool for the same.
+23/07/19 21:11:07 INFO mapred.JobClient: Cleaning up the staging area hdfs://0.0.0.0:8020/var/lib/hadoop-hdfs/cache/mapred/mapred/staging/training/.staging/job_202307191745_0004
+23/07/19 21:11:07 ERROR security.UserGroupInformation: PriviledgedActionException as:training (auth:SIMPLE) cause:org.apache.hadoop.mapred.FileAlreadyExistsException: Output directory clickstream already exists
+23/07/19 21:11:07 ERROR tool.ImportTool: Encountered IOException running import job: org.apache.hadoop.mapred.FileAlreadyExistsException: Output directory clickstream already exists
+	at org.apache.hadoop.mapreduce.lib.output.FileOutputFormat.checkOutputSpecs(FileOutputFormat.java:132)
+	at org.apache.hadoop.mapred.JobClient$2.run(JobClient.java:935)
+	at org.apache.hadoop.mapred.JobClient$2.run(JobClient.java:896)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:396)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1332)
+	at org.apache.hadoop.mapred.JobClient.submitJobInternal(JobClient.java:896)
+	at org.apache.hadoop.mapreduce.Job.submit(Job.java:531)
+	at org.apache.hadoop.mapreduce.Job.waitForCompletion(Job.java:561)
+	at org.apache.sqoop.mapreduce.ImportJobBase.runJob(ImportJobBase.java:141)
+	at org.apache.sqoop.mapreduce.ImportJobBase.runImport(ImportJobBase.java:202)
+	at org.apache.sqoop.manager.SqlManager.importTable(SqlManager.java:465)
+	at org.apache.sqoop.manager.MySQLManager.importTable(MySQLManager.java:100)
+	at org.apache.sqoop.tool.ImportTool.importTable(ImportTool.java:403)
+	at org.apache.sqoop.tool.ImportTool.run(ImportTool.java:476)
+	at org.apache.sqoop.Sqoop.run(Sqoop.java:145)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:70)
+	at org.apache.sqoop.Sqoop.runSqoop(Sqoop.java:181)
+	at org.apache.sqoop.Sqoop.runTool(Sqoop.java:220)
+	at org.apache.sqoop.Sqoop.runTool(Sqoop.java:229)
+	at org.apache.sqoop.Sqoop.main(Sqoop.java:238)
+	at com.cloudera.sqoop.Sqoop.main(Sqoop.java:57)
+
+[training@localhost ~]$ hadoop fs-ls
+Exception in thread "main" java.lang.NoClassDefFoundError: fs-ls
+Caused by: java.lang.ClassNotFoundException: fs-ls
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:202)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:190)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:306)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:301)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:247)
+Could not find the main class: fs-ls.  Program will exit.
+[training@localhost ~]$ hadoop fs -ls
+Found 29 items
+drwxr-xr-x   - training supergroup          0 2023-02-09 08:39 DW
+drwxr-xr-x   - training supergroup          0 2023-02-13 03:03 Demo_OE
+drwxr-xr-x   - training supergroup          0 2023-02-16 08:45 HW
+drwxr-xr-x   - training supergroup          0 2023-02-14 07:24 HiveWork
+drwxr-xr-x   - training supergroup          0 2023-02-16 08:59 HiveWork1
+drwxr-xr-x   - training supergroup          0 2023-02-13 03:15 MO
+drwxr-xr-x   - training supergroup          0 2023-02-13 01:56 OE
+drwxr-xr-x   - training supergroup          0 2023-02-10 16:32 OEDemo
+drwxr-xr-x   - training supergroup          0 2023-02-10 14:17 OddEven
+drwxr-xr-x   - training supergroup          0 2023-02-10 07:01 OddEvenDemo
+drwxr-xr-x   - training supergroup          0 2023-02-07 08:30 PartitionDemo
+drwxr-xr-x   - training supergroup          0 2023-02-07 17:02 PartitionerDemo
+drwxr-xr-x   - training supergroup          0 2023-02-13 06:44 W
+drwxr-xr-x   - training supergroup          0 2023-02-13 04:31 WCV2
+drwxr-xr-x   - training supergroup          0 2023-02-13 07:43 WPOC
+drwxr-xr-x   - training supergroup          0 2023-02-13 02:37 Weather
+drwxr-xr-x   - training supergroup          0 2023-02-13 07:25 WeatherReport
+drwxr-xr-x   - training supergroup          0 2023-02-07 05:02 Word_Count
+drwxr-xr-x   - training supergroup          0 2023-07-19 20:57 clickstream
+drwxr-xr-x   - training supergroup          0 2023-01-23 06:27 dest
+drwxr-xr-x   - training supergroup          0 2023-01-23 06:50 destination
+drwxr-xr-x   - training supergroup          0 2023-02-16 09:15 genre
+drwxr-xr-x   - training supergroup          0 2023-02-16 07:58 movie
+drwxr-xr-x   - training supergroup          0 2023-02-16 07:58 moviegenre
+drwxr-xr-x   - training supergroup          0 2023-02-16 07:59 movierating
+drwxr-xr-x   - training supergroup          0 2023-02-16 07:59 occupation
+drwxr-xr-x   - training supergroup          0 2023-01-23 06:04 source
+drwxr-xr-x   - training supergroup          0 2023-01-23 07:40 src
+drwxr-xr-x   - training supergroup          0 2023-02-16 08:00 user
+[training@localhost ~]$ hadoop fs -rm clickstream
+rm: `clickstream': Is a directory
+[training@localhost ~]$ hadoop fs -ls
+Found 29 items
+drwxr-xr-x   - training supergroup          0 2023-02-09 08:39 DW
+drwxr-xr-x   - training supergroup          0 2023-02-13 03:03 Demo_OE
+drwxr-xr-x   - training supergroup          0 2023-02-16 08:45 HW
+drwxr-xr-x   - training supergroup          0 2023-02-14 07:24 HiveWork
+drwxr-xr-x   - training supergroup          0 2023-02-16 08:59 HiveWork1
+drwxr-xr-x   - training supergroup          0 2023-02-13 03:15 MO
+drwxr-xr-x   - training supergroup          0 2023-02-13 01:56 OE
+drwxr-xr-x   - training supergroup          0 2023-02-10 16:32 OEDemo
+drwxr-xr-x   - training supergroup          0 2023-02-10 14:17 OddEven
+drwxr-xr-x   - training supergroup          0 2023-02-10 07:01 OddEvenDemo
+drwxr-xr-x   - training supergroup          0 2023-02-07 08:30 PartitionDemo
+drwxr-xr-x   - training supergroup          0 2023-02-07 17:02 PartitionerDemo
+drwxr-xr-x   - training supergroup          0 2023-02-13 06:44 W
+drwxr-xr-x   - training supergroup          0 2023-02-13 04:31 WCV2
+drwxr-xr-x   - training supergroup          0 2023-02-13 07:43 WPOC
+drwxr-xr-x   - training supergroup          0 2023-02-13 02:37 Weather
+drwxr-xr-x   - training supergroup          0 2023-02-13 07:25 WeatherReport
+drwxr-xr-x   - training supergroup          0 2023-02-07 05:02 Word_Count
+drwxr-xr-x   - training supergroup          0 2023-07-19 20:57 clickstream
+drwxr-xr-x   - training supergroup          0 2023-01-23 06:27 dest
+drwxr-xr-x   - training supergroup          0 2023-01-23 06:50 destination
+drwxr-xr-x   - training supergroup          0 2023-02-16 09:15 genre
+drwxr-xr-x   - training supergroup          0 2023-02-16 07:58 movie
+drwxr-xr-x   - training supergroup          0 2023-02-16 07:58 moviegenre
+drwxr-xr-x   - training supergroup          0 2023-02-16 07:59 movierating
+drwxr-xr-x   - training supergroup          0 2023-02-16 07:59 occupation
+drwxr-xr-x   - training supergroup          0 2023-01-23 06:04 source
+drwxr-xr-x   - training supergroup          0 2023-01-23 07:40 src
+drwxr-xr-x   - training supergroup          0 2023-02-16 08:00 user
+[training@localhost ~]$ hadoop fs -rmdir clickstream
+rmdir: `clickstream': Directory is not empty
+[training@localhost ~]$ rm clickstream
+rm: cannot remove `clickstream': No such file or directory
+[training@localhost ~]$ hadoop fs -ls
+Found 29 items
+drwxr-xr-x   - training supergroup          0 2023-02-09 08:39 DW
+drwxr-xr-x   - training supergroup          0 2023-02-13 03:03 Demo_OE
+drwxr-xr-x   - training supergroup          0 2023-02-16 08:45 HW
+drwxr-xr-x   - training supergroup          0 2023-02-14 07:24 HiveWork
+drwxr-xr-x   - training supergroup          0 2023-02-16 08:59 HiveWork1
+drwxr-xr-x   - training supergroup          0 2023-02-13 03:15 MO
+drwxr-xr-x   - training supergroup          0 2023-02-13 01:56 OE
+drwxr-xr-x   - training supergroup          0 2023-02-10 16:32 OEDemo
+drwxr-xr-x   - training supergroup          0 2023-02-10 14:17 OddEven
+drwxr-xr-x   - training supergroup          0 2023-02-10 07:01 OddEvenDemo
+drwxr-xr-x   - training supergroup          0 2023-02-07 08:30 PartitionDemo
+drwxr-xr-x   - training supergroup          0 2023-02-07 17:02 PartitionerDemo
+drwxr-xr-x   - training supergroup          0 2023-02-13 06:44 W
+drwxr-xr-x   - training supergroup          0 2023-02-13 04:31 WCV2
+drwxr-xr-x   - training supergroup          0 2023-02-13 07:43 WPOC
+drwxr-xr-x   - training supergroup          0 2023-02-13 02:37 Weather
+drwxr-xr-x   - training supergroup          0 2023-02-13 07:25 WeatherReport
+drwxr-xr-x   - training supergroup          0 2023-02-07 05:02 Word_Count
+drwxr-xr-x   - training supergroup          0 2023-07-19 20:57 clickstream
+drwxr-xr-x   - training supergroup          0 2023-01-23 06:27 dest
+drwxr-xr-x   - training supergroup          0 2023-01-23 06:50 destination
+drwxr-xr-x   - training supergroup          0 2023-02-16 09:15 genre
+drwxr-xr-x   - training supergroup          0 2023-02-16 07:58 movie
+drwxr-xr-x   - training supergroup          0 2023-02-16 07:58 moviegenre
+drwxr-xr-x   - training supergroup          0 2023-02-16 07:59 movierating
+drwxr-xr-x   - training supergroup          0 2023-02-16 07:59 occupation
+drwxr-xr-x   - training supergroup          0 2023-01-23 06:04 source
+drwxr-xr-x   - training supergroup          0 2023-01-23 07:40 src
+drwxr-xr-x   - training supergroup          0 2023-02-16 08:00 user
+[training@localhost ~]$ hadoop fs -ls
+Found 29 items
+drwxr-xr-x   - training supergroup          0 2023-02-09 08:39 DW
+drwxr-xr-x   - training supergroup          0 2023-02-13 03:03 Demo_OE
+drwxr-xr-x   - training supergroup          0 2023-02-16 08:45 HW
+drwxr-xr-x   - training supergroup          0 2023-02-14 07:24 HiveWork
+drwxr-xr-x   - training supergroup          0 2023-02-16 08:59 HiveWork1
+drwxr-xr-x   - training supergroup          0 2023-02-13 03:15 MO
+drwxr-xr-x   - training supergroup          0 2023-02-13 01:56 OE
+drwxr-xr-x   - training supergroup          0 2023-02-10 16:32 OEDemo
+drwxr-xr-x   - training supergroup          0 2023-02-10 14:17 OddEven
+drwxr-xr-x   - training supergroup          0 2023-02-10 07:01 OddEvenDemo
+drwxr-xr-x   - training supergroup          0 2023-02-07 08:30 PartitionDemo
+drwxr-xr-x   - training supergroup          0 2023-02-07 17:02 PartitionerDemo
+drwxr-xr-x   - training supergroup          0 2023-02-13 06:44 W
+drwxr-xr-x   - training supergroup          0 2023-02-13 04:31 WCV2
+drwxr-xr-x   - training supergroup          0 2023-02-13 07:43 WPOC
+drwxr-xr-x   - training supergroup          0 2023-02-13 02:37 Weather
+drwxr-xr-x   - training supergroup          0 2023-02-13 07:25 WeatherReport
+drwxr-xr-x   - training supergroup          0 2023-02-07 05:02 Word_Count
+drwxr-xr-x   - training supergroup          0 2023-07-19 20:57 clickstream
+drwxr-xr-x   - training supergroup          0 2023-01-23 06:27 dest
+drwxr-xr-x   - training supergroup          0 2023-01-23 06:50 destination
+drwxr-xr-x   - training supergroup          0 2023-02-16 09:15 genre
+drwxr-xr-x   - training supergroup          0 2023-02-16 07:58 movie
+drwxr-xr-x   - training supergroup          0 2023-02-16 07:58 moviegenre
+drwxr-xr-x   - training supergroup          0 2023-02-16 07:59 movierating
+drwxr-xr-x   - training supergroup          0 2023-02-16 07:59 occupation
+drwxr-xr-x   - training supergroup          0 2023-01-23 06:04 source
+drwxr-xr-x   - training supergroup          0 2023-01-23 07:40 src
+drwxr-xr-x   - training supergroup          0 2023-02-16 08:00 user
+[training@localhost ~]$ hadoop fs -lsclickstream
+-lsclickstream: Unknown command
+[training@localhost ~]$ hadoop fs -ls clickstream
+Found 2 items
+-rw-r--r--   1 training supergroup          0 2023-07-19 20:57 clickstream/_SUCCESS
+-rw-r--r--   1 training supergroup        465 2023-07-19 20:57 clickstream/part-m-00000
+[training@localhost ~]$ rm clickstream/_SUCCESS
+rm: cannot remove `clickstream/_SUCCESS': No such file or directory
+[training@localhost ~]$ hadoop fs -rm clickstream
+rm: `clickstream': Is a directory
+[training@localhost ~]$ hadoop fs -rmdir clickstream
+rmdir: `clickstream': Directory is not empty
+[training@localhost ~]$ hadoop fs -ls clickstream
+Found 2 items
+-rw-r--r--   1 training supergroup          0 2023-07-19 20:57 clickstream/_SUCCESS
+-rw-r--r--   1 training supergroup        465 2023-07-19 20:57 clickstream/part-m-00000
+[training@localhost ~]$ rm clickstream/part-m-00000
+rm: cannot remove `clickstream/part-m-00000': No such file or directory
+[training@localhost ~]$ hadoop fs -ls
+Found 29 items
+drwxr-xr-x   - training supergroup          0 2023-02-09 08:39 DW
+drwxr-xr-x   - training supergroup          0 2023-02-13 03:03 Demo_OE
+drwxr-xr-x   - training supergroup          0 2023-02-16 08:45 HW
+drwxr-xr-x   - training supergroup          0 2023-02-14 07:24 HiveWork
+drwxr-xr-x   - training supergroup          0 2023-02-16 08:59 HiveWork1
+drwxr-xr-x   - training supergroup          0 2023-02-13 03:15 MO
+drwxr-xr-x   - training supergroup          0 2023-02-13 01:56 OE
+drwxr-xr-x   - training supergroup          0 2023-02-10 16:32 OEDemo
+drwxr-xr-x   - training supergroup          0 2023-02-10 14:17 OddEven
+drwxr-xr-x   - training supergroup          0 2023-02-10 07:01 OddEvenDemo
+drwxr-xr-x   - training supergroup          0 2023-02-07 08:30 PartitionDemo
+drwxr-xr-x   - training supergroup          0 2023-02-07 17:02 PartitionerDemo
+drwxr-xr-x   - training supergroup          0 2023-02-13 06:44 W
+drwxr-xr-x   - training supergroup          0 2023-02-13 04:31 WCV2
+drwxr-xr-x   - training supergroup          0 2023-02-13 07:43 WPOC
+drwxr-xr-x   - training supergroup          0 2023-02-13 02:37 Weather
+drwxr-xr-x   - training supergroup          0 2023-02-13 07:25 WeatherReport
+drwxr-xr-x   - training supergroup          0 2023-02-07 05:02 Word_Count
+drwxr-xr-x   - training supergroup          0 2023-07-19 20:57 clickstream
+drwxr-xr-x   - training supergroup          0 2023-01-23 06:27 dest
+drwxr-xr-x   - training supergroup          0 2023-01-23 06:50 destination
+drwxr-xr-x   - training supergroup          0 2023-02-16 09:15 genre
+drwxr-xr-x   - training supergroup          0 2023-02-16 07:58 movie
+drwxr-xr-x   - training supergroup          0 2023-02-16 07:58 moviegenre
+drwxr-xr-x   - training supergroup          0 2023-02-16 07:59 movierating
+drwxr-xr-x   - training supergroup          0 2023-02-16 07:59 occupation
+drwxr-xr-x   - training supergroup          0 2023-01-23 06:04 source
+drwxr-xr-x   - training supergroup          0 2023-01-23 07:40 src
+drwxr-xr-x   - training supergroup          0 2023-02-16 08:00 user
+[training@localhost ~]$ hadoop fs -rm-r clickstream
+-rm-r: Unknown command
+[training@localhost ~]$ hadoop fs -rm -r clickstream
+Deleted clickstream
+[training@localhost ~]$ sqoop import --connect jdbc:mysql://localhost/projectDB --username training --password training --table clickstream --hive-import --hive-table projectDB.clickstream -m1
+23/07/19 21:27:02 WARN tool.BaseSqoopTool: Setting your password on the command-line is insecure. Consider using -P instead.
+23/07/19 21:27:02 INFO tool.BaseSqoopTool: Using Hive-specific delimiters for output. You can override
+23/07/19 21:27:02 INFO tool.BaseSqoopTool: delimiters with --fields-terminated-by, etc.
+23/07/19 21:27:02 INFO manager.MySQLManager: Preparing to use a MySQL streaming resultset.
+23/07/19 21:27:02 INFO tool.CodeGenTool: Beginning code generation
+23/07/19 21:27:02 INFO manager.SqlManager: Executing SQL statement: SELECT t.* FROM `clickstream` AS t LIMIT 1
+23/07/19 21:27:02 INFO manager.SqlManager: Executing SQL statement: SELECT t.* FROM `clickstream` AS t LIMIT 1
+23/07/19 21:27:02 INFO orm.CompilationManager: HADOOP_HOME is /usr/lib/hadoop
+Note: /tmp/sqoop-training/compile/94d8ad77e64ca789237a4ca8ff6437c5/clickstream.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+23/07/19 21:27:04 INFO orm.CompilationManager: Writing jar file: /tmp/sqoop-training/compile/94d8ad77e64ca789237a4ca8ff6437c5/clickstream.jar
+23/07/19 21:27:04 WARN manager.MySQLManager: It looks like you are importing from mysql.
+23/07/19 21:27:04 WARN manager.MySQLManager: This transfer can be faster! Use the --direct
+23/07/19 21:27:04 WARN manager.MySQLManager: option to exercise a MySQL-specific fast path.
+23/07/19 21:27:04 INFO manager.MySQLManager: Setting zero DATETIME behavior to convertToNull (mysql)
+23/07/19 21:27:04 INFO mapreduce.ImportJobBase: Beginning import of clickstream
+23/07/19 21:27:05 WARN mapred.JobClient: Use GenericOptionsParser for parsing the arguments. Applications should implement Tool for the same.
+23/07/19 21:27:06 INFO mapred.JobClient: Running job: job_202307191745_0005
+23/07/19 21:27:07 INFO mapred.JobClient:  map 0% reduce 0%
+23/07/19 21:27:14 INFO mapred.JobClient:  map 100% reduce 0%
+23/07/19 21:27:15 INFO mapred.JobClient: Job complete: job_202307191745_0005
+23/07/19 21:27:15 INFO mapred.JobClient: Counters: 23
+23/07/19 21:27:15 INFO mapred.JobClient:   File System Counters
+23/07/19 21:27:15 INFO mapred.JobClient:     FILE: Number of bytes read=0
+23/07/19 21:27:15 INFO mapred.JobClient:     FILE: Number of bytes written=198696
+23/07/19 21:27:15 INFO mapred.JobClient:     FILE: Number of read operations=0
+23/07/19 21:27:15 INFO mapred.JobClient:     FILE: Number of large read operations=0
+23/07/19 21:27:15 INFO mapred.JobClient:     FILE: Number of write operations=0
+23/07/19 21:27:15 INFO mapred.JobClient:     HDFS: Number of bytes read=87
+23/07/19 21:27:15 INFO mapred.JobClient:     HDFS: Number of bytes written=465
+23/07/19 21:27:15 INFO mapred.JobClient:     HDFS: Number of read operations=1
+23/07/19 21:27:15 INFO mapred.JobClient:     HDFS: Number of large read operations=0
+23/07/19 21:27:15 INFO mapred.JobClient:     HDFS: Number of write operations=1
+23/07/19 21:27:15 INFO mapred.JobClient:   Job Counters 
+23/07/19 21:27:15 INFO mapred.JobClient:     Launched map tasks=1
+23/07/19 21:27:15 INFO mapred.JobClient:     Total time spent by all maps in occupied slots (ms)=7266
+23/07/19 21:27:15 INFO mapred.JobClient:     Total time spent by all reduces in occupied slots (ms)=0
+23/07/19 21:27:15 INFO mapred.JobClient:     Total time spent by all maps waiting after reserving slots (ms)=0
+23/07/19 21:27:15 INFO mapred.JobClient:     Total time spent by all reduces waiting after reserving slots (ms)=0
+23/07/19 21:27:15 INFO mapred.JobClient:   Map-Reduce Framework
+23/07/19 21:27:15 INFO mapred.JobClient:     Map input records=13
+23/07/19 21:27:15 INFO mapred.JobClient:     Map output records=13
+23/07/19 21:27:15 INFO mapred.JobClient:     Input split bytes=87
+23/07/19 21:27:15 INFO mapred.JobClient:     Spilled Records=0
+23/07/19 21:27:15 INFO mapred.JobClient:     CPU time spent (ms)=610
+23/07/19 21:27:15 INFO mapred.JobClient:     Physical memory (bytes) snapshot=87367680
+23/07/19 21:27:15 INFO mapred.JobClient:     Virtual memory (bytes) snapshot=400990208
+23/07/19 21:27:15 INFO mapred.JobClient:     Total committed heap usage (bytes)=81199104
+23/07/19 21:27:15 INFO mapreduce.ImportJobBase: Transferred 0 bytes in 11.1897 seconds (0 bytes/sec)
+23/07/19 21:27:15 INFO mapreduce.ImportJobBase: Retrieved 13 records.
+23/07/19 21:27:15 INFO manager.SqlManager: Executing SQL statement: SELECT t.* FROM `clickstream` AS t LIMIT 1
+23/07/19 21:27:15 WARN hive.TableDefWriter: Column timestamp had to be cast to a less precise type in Hive
+23/07/19 21:27:15 INFO hive.HiveImport: Removing temporary files from import process: hdfs://0.0.0.0:8020/user/training/clickstream/_logs
+23/07/19 21:27:15 INFO hive.HiveImport: Loading uploaded data into Hive
+23/07/19 21:27:17 INFO hive.HiveImport: Logging initialized using configuration in file:/etc/hive/conf.dist/hive-log4j.properties
+23/07/19 21:27:17 INFO hive.HiveImport: Hive history file=/tmp/training/hive_job_log_training_202307192127_1474356359.txt
+23/07/19 21:27:20 INFO hive.HiveImport: OK
+23/07/19 21:27:20 INFO hive.HiveImport: Time taken: 2.84 seconds
+23/07/19 21:27:21 INFO hive.HiveImport: Loading data to table projectdb.clickstream
+23/07/19 21:27:21 INFO hive.HiveImport: OK
+23/07/19 21:27:21 INFO hive.HiveImport: Time taken: 0.798 seconds
+23/07/19 21:27:21 INFO hive.HiveImport: Hive import complete.
+23/07/19 21:27:21 INFO hive.HiveImport: Export directory is empty, removing it.
+[training@localhost ~]$ sqoop import --connect jdbc:mysql://localhost/projectDB --username training --password training --table customer --hive-import --hive-table projectDB.customer -m1
+23/07/19 21:35:39 WARN tool.BaseSqoopTool: Setting your password on the command-line is insecure. Consider using -P instead.
+23/07/19 21:35:39 INFO tool.BaseSqoopTool: Using Hive-specific delimiters for output. You can override
+23/07/19 21:35:39 INFO tool.BaseSqoopTool: delimiters with --fields-terminated-by, etc.
+23/07/19 21:35:39 INFO manager.MySQLManager: Preparing to use a MySQL streaming resultset.
+23/07/19 21:35:39 INFO tool.CodeGenTool: Beginning code generation
+23/07/19 21:35:39 INFO manager.SqlManager: Executing SQL statement: SELECT t.* FROM `customer` AS t LIMIT 1
+23/07/19 21:35:39 INFO manager.SqlManager: Executing SQL statement: SELECT t.* FROM `customer` AS t LIMIT 1
+23/07/19 21:35:39 INFO orm.CompilationManager: HADOOP_HOME is /usr/lib/hadoop
+Note: /tmp/sqoop-training/compile/9ddcef4719922d0d8237eca8cdceeaea/customer.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+23/07/19 21:35:41 INFO orm.CompilationManager: Writing jar file: /tmp/sqoop-training/compile/9ddcef4719922d0d8237eca8cdceeaea/customer.jar
+23/07/19 21:35:41 WARN manager.MySQLManager: It looks like you are importing from mysql.
+23/07/19 21:35:41 WARN manager.MySQLManager: This transfer can be faster! Use the --direct
+23/07/19 21:35:41 WARN manager.MySQLManager: option to exercise a MySQL-specific fast path.
+23/07/19 21:35:41 INFO manager.MySQLManager: Setting zero DATETIME behavior to convertToNull (mysql)
+23/07/19 21:35:41 INFO mapreduce.ImportJobBase: Beginning import of customer
+23/07/19 21:35:42 WARN mapred.JobClient: Use GenericOptionsParser for parsing the arguments. Applications should implement Tool for the same.
+23/07/19 21:35:43 INFO mapred.JobClient: Running job: job_202307191745_0006
+23/07/19 21:35:44 INFO mapred.JobClient:  map 0% reduce 0%
+23/07/19 21:35:50 INFO mapred.JobClient:  map 100% reduce 0%
+23/07/19 21:35:51 INFO mapred.JobClient: Job complete: job_202307191745_0006
+23/07/19 21:35:51 INFO mapred.JobClient: Counters: 23
+23/07/19 21:35:51 INFO mapred.JobClient:   File System Counters
+23/07/19 21:35:51 INFO mapred.JobClient:     FILE: Number of bytes read=0
+23/07/19 21:35:51 INFO mapred.JobClient:     FILE: Number of bytes written=198661
+23/07/19 21:35:51 INFO mapred.JobClient:     FILE: Number of read operations=0
+23/07/19 21:35:51 INFO mapred.JobClient:     FILE: Number of large read operations=0
+23/07/19 21:35:51 INFO mapred.JobClient:     FILE: Number of write operations=0
+23/07/19 21:35:51 INFO mapred.JobClient:     HDFS: Number of bytes read=87
+23/07/19 21:35:51 INFO mapred.JobClient:     HDFS: Number of bytes written=196
+23/07/19 21:35:51 INFO mapred.JobClient:     HDFS: Number of read operations=1
+23/07/19 21:35:51 INFO mapred.JobClient:     HDFS: Number of large read operations=0
+23/07/19 21:35:51 INFO mapred.JobClient:     HDFS: Number of write operations=1
+23/07/19 21:35:51 INFO mapred.JobClient:   Job Counters 
+23/07/19 21:35:51 INFO mapred.JobClient:     Launched map tasks=1
+23/07/19 21:35:51 INFO mapred.JobClient:     Total time spent by all maps in occupied slots (ms)=6492
+23/07/19 21:35:51 INFO mapred.JobClient:     Total time spent by all reduces in occupied slots (ms)=0
+23/07/19 21:35:51 INFO mapred.JobClient:     Total time spent by all maps waiting after reserving slots (ms)=0
+23/07/19 21:35:51 INFO mapred.JobClient:     Total time spent by all reduces waiting after reserving slots (ms)=0
+23/07/19 21:35:51 INFO mapred.JobClient:   Map-Reduce Framework
+23/07/19 21:35:51 INFO mapred.JobClient:     Map input records=5
+23/07/19 21:35:51 INFO mapred.JobClient:     Map output records=5
+23/07/19 21:35:51 INFO mapred.JobClient:     Input split bytes=87
+23/07/19 21:35:51 INFO mapred.JobClient:     Spilled Records=0
+23/07/19 21:35:51 INFO mapred.JobClient:     CPU time spent (ms)=590
+23/07/19 21:35:51 INFO mapred.JobClient:     Physical memory (bytes) snapshot=85385216
+23/07/19 21:35:51 INFO mapred.JobClient:     Virtual memory (bytes) snapshot=399818752
+23/07/19 21:35:51 INFO mapred.JobClient:     Total committed heap usage (bytes)=64356352
+23/07/19 21:35:51 INFO mapreduce.ImportJobBase: Transferred 0 bytes in 9.6124 seconds (0 bytes/sec)
+23/07/19 21:35:51 INFO mapreduce.ImportJobBase: Retrieved 5 records.
+23/07/19 21:35:51 INFO manager.SqlManager: Executing SQL statement: SELECT t.* FROM `customer` AS t LIMIT 1
+23/07/19 21:35:51 INFO hive.HiveImport: Removing temporary files from import process: hdfs://0.0.0.0:8020/user/training/customer/_logs
+23/07/19 21:35:51 INFO hive.HiveImport: Loading uploaded data into Hive
+23/07/19 21:35:52 INFO hive.HiveImport: Logging initialized using configuration in file:/etc/hive/conf.dist/hive-log4j.properties
+23/07/19 21:35:52 INFO hive.HiveImport: Hive history file=/tmp/training/hive_job_log_training_202307192135_678291363.txt
+23/07/19 21:35:55 INFO hive.HiveImport: OK
+23/07/19 21:35:55 INFO hive.HiveImport: Time taken: 2.349 seconds
+23/07/19 21:35:55 INFO hive.HiveImport: Loading data to table projectdb.customer
+23/07/19 21:35:55 INFO hive.HiveImport: OK
+23/07/19 21:35:55 INFO hive.HiveImport: Time taken: 0.601 seconds
+23/07/19 21:35:55 INFO hive.HiveImport: Hive import complete.
+23/07/19 21:35:55 INFO hive.HiveImport: Export directory is empty, removing it.
+[training@localhost ~]$ sqoop import --connect jdbc:mysql://localhost/projectDB --username training --password training --table purchase --hive-import --hive-table projectDB.purchase -m1
+23/07/19 21:37:52 WARN tool.BaseSqoopTool: Setting your password on the command-line is insecure. Consider using -P instead.
+23/07/19 21:37:52 INFO tool.BaseSqoopTool: Using Hive-specific delimiters for output. You can override
+23/07/19 21:37:52 INFO tool.BaseSqoopTool: delimiters with --fields-terminated-by, etc.
+23/07/19 21:37:52 INFO manager.MySQLManager: Preparing to use a MySQL streaming resultset.
+23/07/19 21:37:52 INFO tool.CodeGenTool: Beginning code generation
+23/07/19 21:37:53 INFO manager.SqlManager: Executing SQL statement: SELECT t.* FROM `purchase` AS t LIMIT 1
+23/07/19 21:37:53 INFO manager.SqlManager: Executing SQL statement: SELECT t.* FROM `purchase` AS t LIMIT 1
+23/07/19 21:37:53 INFO orm.CompilationManager: HADOOP_HOME is /usr/lib/hadoop
+Note: /tmp/sqoop-training/compile/278a2058a05c0442af5e4b306182eb37/purchase.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+23/07/19 21:37:54 INFO orm.CompilationManager: Writing jar file: /tmp/sqoop-training/compile/278a2058a05c0442af5e4b306182eb37/purchase.jar
+23/07/19 21:37:54 WARN manager.MySQLManager: It looks like you are importing from mysql.
+23/07/19 21:37:54 WARN manager.MySQLManager: This transfer can be faster! Use the --direct
+23/07/19 21:37:54 WARN manager.MySQLManager: option to exercise a MySQL-specific fast path.
+23/07/19 21:37:54 INFO manager.MySQLManager: Setting zero DATETIME behavior to convertToNull (mysql)
+23/07/19 21:37:54 INFO mapreduce.ImportJobBase: Beginning import of purchase
+23/07/19 21:37:55 WARN mapred.JobClient: Use GenericOptionsParser for parsing the arguments. Applications should implement Tool for the same.
+23/07/19 21:37:55 INFO mapred.JobClient: Running job: job_202307191745_0007
+23/07/19 21:37:56 INFO mapred.JobClient:  map 0% reduce 0%
+23/07/19 21:38:02 INFO mapred.JobClient:  map 100% reduce 0%
+23/07/19 21:38:04 INFO mapred.JobClient: Job complete: job_202307191745_0007
+23/07/19 21:38:04 INFO mapred.JobClient: Counters: 23
+23/07/19 21:38:04 INFO mapred.JobClient:   File System Counters
+23/07/19 21:38:04 INFO mapred.JobClient:     FILE: Number of bytes read=0
+23/07/19 21:38:04 INFO mapred.JobClient:     FILE: Number of bytes written=199191
+23/07/19 21:38:04 INFO mapred.JobClient:     FILE: Number of read operations=0
+23/07/19 21:38:04 INFO mapred.JobClient:     FILE: Number of large read operations=0
+23/07/19 21:38:04 INFO mapred.JobClient:     FILE: Number of write operations=0
+23/07/19 21:38:04 INFO mapred.JobClient:     HDFS: Number of bytes read=87
+23/07/19 21:38:04 INFO mapred.JobClient:     HDFS: Number of bytes written=143
+23/07/19 21:38:04 INFO mapred.JobClient:     HDFS: Number of read operations=1
+23/07/19 21:38:04 INFO mapred.JobClient:     HDFS: Number of large read operations=0
+23/07/19 21:38:04 INFO mapred.JobClient:     HDFS: Number of write operations=1
+23/07/19 21:38:04 INFO mapred.JobClient:   Job Counters 
+23/07/19 21:38:04 INFO mapred.JobClient:     Launched map tasks=1
+23/07/19 21:38:04 INFO mapred.JobClient:     Total time spent by all maps in occupied slots (ms)=7138
+23/07/19 21:38:04 INFO mapred.JobClient:     Total time spent by all reduces in occupied slots (ms)=0
+23/07/19 21:38:04 INFO mapred.JobClient:     Total time spent by all maps waiting after reserving slots (ms)=0
+23/07/19 21:38:04 INFO mapred.JobClient:     Total time spent by all reduces waiting after reserving slots (ms)=0
+23/07/19 21:38:04 INFO mapred.JobClient:   Map-Reduce Framework
+23/07/19 21:38:04 INFO mapred.JobClient:     Map input records=5
+23/07/19 21:38:04 INFO mapred.JobClient:     Map output records=5
+23/07/19 21:38:04 INFO mapred.JobClient:     Input split bytes=87
+23/07/19 21:38:04 INFO mapred.JobClient:     Spilled Records=0
+23/07/19 21:38:04 INFO mapred.JobClient:     CPU time spent (ms)=640
+23/07/19 21:38:04 INFO mapred.JobClient:     Physical memory (bytes) snapshot=88064000
+23/07/19 21:38:04 INFO mapred.JobClient:     Virtual memory (bytes) snapshot=403292160
+23/07/19 21:38:04 INFO mapred.JobClient:     Total committed heap usage (bytes)=64356352
+23/07/19 21:38:04 INFO mapreduce.ImportJobBase: Transferred 0 bytes in 10.3435 seconds (0 bytes/sec)
+23/07/19 21:38:04 INFO mapreduce.ImportJobBase: Retrieved 5 records.
+23/07/19 21:38:04 INFO manager.SqlManager: Executing SQL statement: SELECT t.* FROM `purchase` AS t LIMIT 1
+23/07/19 21:38:04 WARN hive.TableDefWriter: Column timestamp had to be cast to a less precise type in Hive
+23/07/19 21:38:04 INFO hive.HiveImport: Removing temporary files from import process: hdfs://0.0.0.0:8020/user/training/purchase/_logs
+23/07/19 21:38:05 INFO hive.HiveImport: Loading uploaded data into Hive
+23/07/19 21:38:06 INFO hive.HiveImport: Logging initialized using configuration in file:/etc/hive/conf.dist/hive-log4j.properties
+23/07/19 21:38:06 INFO hive.HiveImport: Hive history file=/tmp/training/hive_job_log_training_202307192138_103300298.txt
+23/07/19 21:38:09 INFO hive.HiveImport: OK
+23/07/19 21:38:09 INFO hive.HiveImport: Time taken: 2.464 seconds
+23/07/19 21:38:09 INFO hive.HiveImport: Loading data to table projectdb.purchase
+23/07/19 21:38:09 INFO hive.HiveImport: OK
+23/07/19 21:38:09 INFO hive.HiveImport: Time taken: 0.706 seconds
+23/07/19 21:38:09 INFO hive.HiveImport: Hive import complete.
+23/07/19 21:38:09 INFO hive.HiveImport: Export directory is empty, removing it.
+[training@localhost ~]$ 

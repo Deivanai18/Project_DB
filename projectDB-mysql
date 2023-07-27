@@ -1,0 +1,140 @@
+[training@localhost ~]$ mysql --user=training --password=training
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 15
+Server version: 5.1.66 Source distribution
+
+Copyright (c) 2000, 2012, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| hue                |
+| metastore          |
+| movielens          |
+| mysql              |
+| projectDB          |
+| test               |
+| training           |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> use projectDB;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> create table customer (userId integer, name varchar(50) not null, email varchar(50) not null);
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> load data infile '/home/training/Downloads/Dataset - customer_data.csv' into table customer fields terminated by ',' lines terminated by '\n';
+Query OK, 6 rows affected, 6 warnings (0.00 sec)
+Records: 6  Deleted: 0  Skipped: 0  Warnings: 0
+
+mysql> select * from customer;
++--------+----------------+------------------------------+
+| userId | name           | email                        |
++--------+----------------+------------------------------+
+                      |   | email"
+       | | John Doe       | john.doe@example.com"
+     | 0 | Jane Smith     | jane.smith@example.com"
+ |     0 | Robert Johnson | robert.johnson@example.com"
+     | 0 | Lisa Brown     | lisa.brown@example.com"
+|      0 | Michael Wilson | michael.wilson@example.com"  |
++--------+----------------+------------------------------+
+6 rows in set (0.00 sec)
+
+mysql> drop table customer;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> create table customer (userId integer, name varchar(50) not null, email varchar(50) not null);
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> load data infile '/home/training/Downloads/Dataset - customer_data.csv' into table customer fields terminated by ',' lines terminated by '\n';
+Query OK, 5 rows affected (0.00 sec)
+Records: 5  Deleted: 0  Skipped: 0  Warnings: 0
+
+mysql> select * from customer;
++--------+----------------+-----------------------------+
+| userId | name           | email                       |
++--------+----------------+-----------------------------+
+       | | John Doe       | john.doe@example.com
+     | 2 | Jane Smith     | jane.smith@example.com
+ |     3 | Robert Johnson | robert.johnson@example.com
+     | 4 | Lisa Brown     | lisa.brown@example.com
+|      5 | Michael Wilson | michael.wilson@example.com  |
++--------+----------------+-----------------------------+
+5 rows in set (0.00 sec)
+
+mysql> Ctrl-C -- exit!
+Aborted
+[training@localhost ~]$ mysql --user=training --password=training
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 16
+Server version: 5.1.66 Source distribution
+
+Copyright (c) 2000, 2012, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use projectDB;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> create table purchase (userId integer, timestamp datetime not null, amount varchar(10) not null);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> load data infile '/home/training/Downloads/Dataset - purchase_data.csv' into table purchase fields terminated by ',' lines terminated by '\n';
+Query OK, 5 rows affected (0.00 sec)
+Records: 5  Deleted: 0  Skipped: 0  Warnings: 0
+
+mysql> select * from purchase;
++--------+---------------------+--------+
+| userId | timestamp           | amount |
++--------+---------------------+--------+
+   |   1 | 2023-01-01 10:05:00 | 100
+   |   2 | 2023-01-01 10:08:00 | 150
+   |   3 | 2023-01-01 10:09:00 | 200
+   |   4 | 2023-01-01 10:13:00 | 120
+|      5 | 2023-01-01 10:17:00 | 80     |
++--------+---------------------+--------+
+5 rows in set (0.00 sec)
+
+mysql> drop table purchase;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> create table purchase (userId integer auto_increment, timestamp datetime not null, amount varchar(10) not null primary key (userId));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(userId))' at line 1
+mysql> create table purchase (userId int auto_increment, timestamp datetime not null, amount varchar(10) not null, primary key (userId));
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> load data infile '/home/training/Downloads/Dataset - purchase_data.csv' into table purchase fields terminated by ',' lines terminated by '\n';
+Query OK, 5 rows affected (0.00 sec)
+Records: 5  Deleted: 0  Skipped: 0  Warnings: 0
+
+mysql> select * from purchase;
++--------+---------------------+--------+
+| userId | timestamp           | amount |
++--------+---------------------+--------+
+   |   1 | 2023-01-01 10:05:00 | 100
+   |   2 | 2023-01-01 10:08:00 | 150
+   |   3 | 2023-01-01 10:09:00 | 200
+   |   4 | 2023-01-01 10:13:00 | 120
+|      5 | 2023-01-01 10:17:00 | 80     |
++--------+---------------------+--------+
+5 rows in set (0.00 sec)
+
+mysql> 
+
